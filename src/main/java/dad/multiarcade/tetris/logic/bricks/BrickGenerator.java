@@ -2,7 +2,7 @@ package dad.multiarcade.tetris.logic.bricks;
 
 public interface BrickGenerator {
 
-    Brick getBrick();
+	Brick getBrick();
 
-    Brick getNextBrick();
+	Brick getNextBrick();
 }

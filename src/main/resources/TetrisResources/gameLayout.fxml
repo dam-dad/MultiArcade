@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
-
 <?import dad.multiarcade.tetris.gui.GameOverPanel?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -11,8 +9,7 @@
 <?import javafx.scene.text.Text?>
 <?import java.net.URL?>
 
-<Pane fx:controller="dad.multiarcade.tetris.gui.GuiController"
-      xmlns:fx="http://javafx.com/fxml">
+<Pane fx:controller="dad.multiarcade.tetris.gui.GuiController" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17">
     <GridPane fx:id="brickPanel" vgap="1" hgap="1"/>
     <BorderPane styleClass="gameBoard" fx:id="gameBoard">
         <center>

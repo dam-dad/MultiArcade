@@ -5,13 +5,13 @@ import dad.multiarcade.tetris.logic.DownData;
 
 public interface InputEventListener {
 
-    DownData onDownEvent(MoveEvent event);
+	DownData onDownEvent(MoveEvent event);
 
-    ViewData onLeftEvent(MoveEvent event);
+	ViewData onLeftEvent(MoveEvent event);
 
-    ViewData onRightEvent(MoveEvent event);
+	ViewData onRightEvent(MoveEvent event);
 
-    ViewData onRotateEvent(MoveEvent event);
+	ViewData onRotateEvent(MoveEvent event);
 
-    void createNewGame();
+	void createNewGame();
 }

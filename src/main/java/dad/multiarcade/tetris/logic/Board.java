@@ -2,25 +2,25 @@ package dad.multiarcade.tetris.logic;
 
 public interface Board {
 
-    boolean moveBrickDown();
+	boolean moveBrickDown();
 
-    boolean moveBrickLeft();
+	boolean moveBrickLeft();
 
-    boolean moveBrickRight();
+	boolean moveBrickRight();
 
-    boolean rotateLeftBrick();
+	boolean rotateLeftBrick();
 
-    boolean createNewBrick();
+	boolean createNewBrick();
 
-    int[][] getBoardMatrix();
+	int[][] getBoardMatrix();
 
-    ViewData getViewData();
+	ViewData getViewData();
 
-    void mergeBrickToBackground();
+	void mergeBrickToBackground();
 
-    ClearRow clearRows();
+	ClearRow clearRows();
 
-    Score getScore();
+	Score getScore();
 
-    void newGame();
+	void newGame();
 }
