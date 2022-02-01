@@ -10,6 +10,12 @@ final class LBrick implements Brick {
     private final List<int[][]> brickMatrix = new ArrayList<>();
 
     public LBrick() {
+    	brickMatrix.add(new int[][]{
+            {0, 3, 0, 0},
+            {0, 3, 0, 0},
+            {0, 3, 3, 0},
+            {0, 0, 0, 0}
+    });
         brickMatrix.add(new int[][]{
                 {0, 0, 0, 0},
                 {0, 3, 3, 3},
@@ -28,12 +34,7 @@ final class LBrick implements Brick {
                 {3, 3, 3, 0},
                 {0, 0, 0, 0}
         });
-        brickMatrix.add(new int[][]{
-                {0, 3, 0, 0},
-                {0, 3, 0, 0},
-                {0, 3, 3, 0},
-                {0, 0, 0, 0}
-        });
+        
     }
 
     @Override

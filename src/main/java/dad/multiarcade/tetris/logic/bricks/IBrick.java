@@ -10,6 +10,7 @@ final class IBrick implements Brick {
     private final List<int[][]> brickMatrix = new ArrayList<>();
 
     public IBrick() {
+    	
         brickMatrix.add(new int[][]{
                 {0, 0, 0, 0},
                 {1, 1, 1, 1},
@@ -17,11 +18,12 @@ final class IBrick implements Brick {
                 {0, 0, 0, 0}
         });
         brickMatrix.add(new int[][]{
-                {0, 1, 0, 0},
-                {0, 1, 0, 0},
-                {0, 1, 0, 0},
-                {0, 1, 0, 0}
-        });
+            {0, 1, 0, 0},
+            {0, 1, 0, 0},
+            {0, 1, 0, 0},
+            {0, 1, 0, 0}
+    });
+        
     }
 
     @Override
