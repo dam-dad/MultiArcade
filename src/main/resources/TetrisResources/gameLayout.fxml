@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import dad.multiarcade.tetris.gui.GameOverPanel?>
+<?import dad.multiarcade.tetris.panels.GameOverPanel?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ToggleButton?>
@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Text?>
 <?import java.net.URL?>
 
-<Pane fx:controller="dad.multiarcade.tetris.gui.GuiController" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17">
+<Pane fx:id="root" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17">
     <GridPane fx:id="brickPanel" vgap="1" hgap="1"/>
     <BorderPane styleClass="gameBoard" fx:id="gameBoard">
         <center>
@@ -33,6 +33,7 @@
         <Button text="New Game" onAction="#newGame" styleClass="ipad-dark-grey" prefWidth="140"/>
         <ToggleButton text="Pause" styleClass="ipad-dark-grey" onAction="#pauseGame" prefWidth="140"
                       fx:id="pauseButton"/>
+        <Button text="Close" onAction="#onCloseAction" styleClass="ipad-dark-grey" prefWidth="140"/>
         <VBox fx:id="helpBox">
 
             <Text styleClass="helpInfo" wrappingWidth="150">

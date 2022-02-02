@@ -1,4 +1,4 @@
-package dad.multiarcade.tetris.gui;
+package dad.multiarcade.tetris.panels;
 
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;

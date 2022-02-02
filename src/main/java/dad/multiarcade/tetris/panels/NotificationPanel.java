@@ -1,4 +1,4 @@
-package dad.multiarcade.tetris.gui;
+package dad.multiarcade.tetris.panels;
 
 import javafx.animation.FadeTransition;
 import javafx.animation.ParallelTransition;

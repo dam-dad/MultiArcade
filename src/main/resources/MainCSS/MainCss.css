@@ -1,0 +1,21 @@
+
+.rootPlay {
+	-fx-background-color: radial-gradient(radius 100%, red, darkgray, black);
+	-fx-background-size: stretch;
+}
+
+
+.root {
+	-fx-background-image: url("/img/arcade.png");
+	-fx-background-size: stretch;
+}
+
+
+Button {
+    -fx-background-color:#1a7cb6;
+}
+
+Label{
+	-fx-text-fill:linear-gradient(from 0% 0% to 100% 100%, white, purple);
+}
+

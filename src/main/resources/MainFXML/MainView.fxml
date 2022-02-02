@@ -7,9 +7,9 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-
-<GridPane fx:id="root" prefHeight="400.0" prefWidth="640.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17">
+<GridPane fx:id="root" prefHeight="400.0" prefWidth="300.0" stylesheets="@../MainCSS/MainCss.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <rowConstraints>
       <RowConstraints prefHeight="30.0" />
       <RowConstraints prefHeight="30.0" vgrow="ALWAYS" />
@@ -20,11 +20,17 @@
       <ColumnConstraints hgrow="ALWAYS" prefWidth="100.0" />
    </columnConstraints>
    <children>
-      <Label fx:id="multiArcadeLabel" text="MultiArcade" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+      <Label fx:id="multiArcadeLabel" text="MULTI" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+         <font>
+            <Font size="24.0" />
+         </font></Label>
       <VBox fx:id="buttonVbox" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <children>
-            <Button fx:id="jugarButton" defaultButton="true" mnemonicParsing="false" text="Jugar" />
-            <Button fx:id="salirButton" mnemonicParsing="false" text="Salir">
+            <Button fx:id="jugarButton" defaultButton="true" mnemonicParsing="false" onAction="#onJugarAction" text="Jugar">
+               <VBox.margin>
+                  <Insets top="90.0" />
+               </VBox.margin></Button>
+            <Button fx:id="salirButton" mnemonicParsing="false" onAction="#onSalirAction" text="Salir">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>

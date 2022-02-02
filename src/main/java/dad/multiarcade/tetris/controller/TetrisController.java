@@ -1,10 +1,14 @@
-package dad.multiarcade.tetris.gui;
+package dad.multiarcade.tetris.controller;
 
+import dad.multiarcade.mainapp.App;
 import dad.multiarcade.tetris.logic.DownData;
 import dad.multiarcade.tetris.logic.ViewData;
 import dad.multiarcade.tetris.logic.events.*;
+import dad.multiarcade.tetris.panels.GameOverPanel;
+import dad.multiarcade.tetris.panels.NotificationPanel;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.application.Platform;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -13,27 +17,40 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
+import javafx.scene.Scene;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.effect.Reflection;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import javafx.util.Duration;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class GuiController implements Initializable {
+public class TetrisController implements Initializable {
 
 	private static final int BRICK_SIZE = 20;
+	
+	private Stage stage;
+	
+	@FXML
+	private Pane root;
 
 	@FXML
 	private BorderPane gameBoard;
@@ -70,10 +87,22 @@ public class GuiController implements Initializable {
 	private final BooleanProperty isPause = new SimpleBooleanProperty();
 
 	private final BooleanProperty isGameOver = new SimpleBooleanProperty();
+	
+	public TetrisController() throws IOException {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/TetrisResources/gameLayout.fxml"));
+		loader.setController(this);
+		loader.load();
+		
+	}
+	
+	public Pane getView() {
+		return root;
+	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		Font.loadFont(getClass().getResource("/fxml/TetrisResources/digital.ttf").toExternalForm(), 38);
+		
 		gamePanel.setFocusTraversable(true);
 		gamePanel.requestFocus();
 		gamePanel.setOnKeyPressed(new EventHandler<KeyEvent>() {
@@ -106,6 +135,7 @@ public class GuiController implements Initializable {
 
 			}
 		});
+		
 		gameOverPanel.setVisible(false);
 		pauseButton.selectedProperty().bindBidirectional(isPause);
 		pauseButton.selectedProperty().addListener(new ChangeListener<Boolean>() {
@@ -125,7 +155,26 @@ public class GuiController implements Initializable {
 		reflection.setTopOpacity(0.9);
 		reflection.setTopOffset(-12);
 		scoreValue.setEffect(reflection);
+		
+		stage=new Stage();
+		
+		stage.setTitle("Tetris");
+
+		stage.setScene(new Scene(getView(),400,510));
+		stage.getIcons().add(new Image("/img/tetris_logo.png"));
+		stage.initOwner(App.getPrimaryStage());
+		stage.initModality(Modality.APPLICATION_MODAL);
+		
+		stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+			@Override
+			public void handle(WindowEvent t) {
+				Platform.exit();
+				System.exit(0);
+			}
+		});
 	}
+	
+	
 
 	public void initGameView(int[][] boardMatrix, ViewData brick) {
 		displayMatrix = new Rectangle[boardMatrix.length][boardMatrix[0].length];
@@ -277,5 +326,16 @@ public class GuiController implements Initializable {
 
 	public void pauseGame(ActionEvent actionEvent) {
 		gamePanel.requestFocus();
+	}
+
+	
+	public void onCloseAction(ActionEvent actionEvent) {
+		System.exit(0);
+
+	}
+	public void show() {
+		stage.show();
+    	new GameController(this);
+    	
 	}
 }

@@ -1,6 +1,5 @@
-package dad.multiarcade.tetris.app;
+package dad.multiarcade.tetris.controller;
 
-import dad.multiarcade.tetris.gui.GuiController;
 import dad.multiarcade.tetris.logic.*;
 import dad.multiarcade.tetris.logic.events.EventSource;
 import dad.multiarcade.tetris.logic.events.InputEventListener;
@@ -10,10 +9,12 @@ public class GameController implements InputEventListener {
 
 	private Board board = new SimpleBoard(25, 10);
 
-	private final GuiController viewGuiController;
+	private final TetrisController viewGuiController;
 
-	public GameController(GuiController c) {
+	public GameController(TetrisController c) {
+
 		viewGuiController = c;
+
 		board.createNewBrick();
 		viewGuiController.setEventListener(this);
 		viewGuiController.initGameView(board.getBoardMatrix(), board.getViewData());

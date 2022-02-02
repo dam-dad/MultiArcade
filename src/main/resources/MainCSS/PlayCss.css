@@ -1,0 +1,11 @@
+
+.rootPlay {
+	-fx-background-color:  linear-gradient(from 0% 0% to 100% 100%, white, purple);
+}
+
+
+
+Button {
+    -fx-background-color:#1a7cb6;
+}
+
