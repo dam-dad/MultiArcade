@@ -60,6 +60,6 @@
         </VBox>
     </Group>
     <stylesheets>
-        <URL value="@window_style.css"/>
+        <URL value="@/css/Tetris.css"/>
     </stylesheets>
 </Pane>

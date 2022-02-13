@@ -89,7 +89,7 @@ public class TetrisController implements Initializable {
 	private final BooleanProperty isGameOver = new SimpleBooleanProperty();
 	
 	public TetrisController() throws IOException {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/TetrisResources/gameLayout.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/TetrisView.fxml"));
 		loader.setController(this);
 		loader.load();
 		
@@ -101,7 +101,7 @@ public class TetrisController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		Font.loadFont(getClass().getResource("/fxml/TetrisResources/digital.ttf").toExternalForm(), 38);
+		Font.loadFont(getClass().getResource("/tff/digital.ttf").toExternalForm(), 38);
 		
 		gamePanel.setFocusTraversable(true);
 		gamePanel.requestFocus();
@@ -216,7 +216,7 @@ public class TetrisController implements Initializable {
 			returnPaint = Color.TRANSPARENT;
 			break;
 		case 1:
-			returnPaint = Color.AQUA;
+			returnPaint = Color.BLUE;
 			break;
 		case 2:
 			returnPaint = Color.BLUEVIOLET;
