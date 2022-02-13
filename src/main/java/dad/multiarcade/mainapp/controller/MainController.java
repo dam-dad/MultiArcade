@@ -16,31 +16,30 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 
 public class MainController implements Initializable {
-	
-	SnakeController sc=new SnakeController();
-	TetrisController tc=new TetrisController();
 
+	SnakeController sc = new SnakeController();
+	TetrisController tc = new TetrisController();
 
-	 	@FXML
-	    private Button buscaminasButton;
+	@FXML
+	private Button buscaminasButton;
 
-	    @FXML
-	    private VBox buttonVbox;
+	@FXML
+	private VBox buttonVbox;
 
-	    @FXML
-	    private Label multiArcadeLabel;
+	@FXML
+	private Label multiArcadeLabel;
 
-	    @FXML
-	    private GridPane root;
+	@FXML
+	private GridPane root;
 
-	    @FXML
-	    private Button salirButton;
+	@FXML
+	private Button salirButton;
 
-	    @FXML
-	    private Button snakeButton;
+	@FXML
+	private Button snakeButton;
 
-	    @FXML
-	    private Button tetrisButton;
+	@FXML
+	private Button tetrisButton;
 
 	public MainController() throws IOException {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/MainView.fxml"));
@@ -57,25 +56,25 @@ public class MainController implements Initializable {
 
 	}
 
-	 @FXML
-	    void onBuscaminasAction(ActionEvent event) {
+	@FXML
+	void onBuscaminasAction(ActionEvent event) {
 
-	    }
+	}
 
-	    @FXML
-	    void onSnakeAction(ActionEvent event) {
-	    	sc.show();
-	    }
+	@FXML
+	void onSnakeAction(ActionEvent event) {
+		sc.show();
+	}
 
-	    @FXML
-	    void onTetrisAction(ActionEvent event) {
-	    	tc.show();
-	    }
-	    
-		@FXML
-		void onSalirAction(ActionEvent event) {
-			System.exit(0);
+	@FXML
+	void onTetrisAction(ActionEvent event) {
+		tc.show();
+	}
 
-		}
+	@FXML
+	void onSalirAction(ActionEvent event) {
+		System.exit(0);
+
+	}
 
 }

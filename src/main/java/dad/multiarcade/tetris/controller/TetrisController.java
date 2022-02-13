@@ -46,9 +46,9 @@ import java.util.ResourceBundle;
 public class TetrisController implements Initializable {
 
 	private static final int BRICK_SIZE = 20;
-	
+
 	private Stage stage;
-	
+
 	@FXML
 	private Pane root;
 
@@ -87,14 +87,14 @@ public class TetrisController implements Initializable {
 	private final BooleanProperty isPause = new SimpleBooleanProperty();
 
 	private final BooleanProperty isGameOver = new SimpleBooleanProperty();
-	
+
 	public TetrisController() throws IOException {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/TetrisView.fxml"));
 		loader.setController(this);
 		loader.load();
-		
+
 	}
-	
+
 	public Pane getView() {
 		return root;
 	}
@@ -102,7 +102,7 @@ public class TetrisController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		Font.loadFont(getClass().getResource("/tff/digital.ttf").toExternalForm(), 38);
-		
+
 		gamePanel.setFocusTraversable(true);
 		gamePanel.requestFocus();
 		gamePanel.setOnKeyPressed(new EventHandler<KeyEvent>() {
@@ -135,7 +135,7 @@ public class TetrisController implements Initializable {
 
 			}
 		});
-		
+
 		gameOverPanel.setVisible(false);
 		pauseButton.selectedProperty().bindBidirectional(isPause);
 		pauseButton.selectedProperty().addListener(new ChangeListener<Boolean>() {
@@ -155,16 +155,16 @@ public class TetrisController implements Initializable {
 		reflection.setTopOpacity(0.9);
 		reflection.setTopOffset(-12);
 		scoreValue.setEffect(reflection);
-		
-		stage=new Stage();
-		
+
+		stage = new Stage();
+
 		stage.setTitle("Tetris");
 
-		stage.setScene(new Scene(getView(),400,510));
+		stage.setScene(new Scene(getView(), 400, 510));
 		stage.getIcons().add(new Image("/img/tetris_logo.png"));
 		stage.initOwner(App.getPrimaryStage());
 		stage.initModality(Modality.APPLICATION_MODAL);
-		
+
 		stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
 			@Override
 			public void handle(WindowEvent t) {
@@ -173,8 +173,6 @@ public class TetrisController implements Initializable {
 			}
 		});
 	}
-	
-	
 
 	public void initGameView(int[][] boardMatrix, ViewData brick) {
 		displayMatrix = new Rectangle[boardMatrix.length][boardMatrix[0].length];
@@ -328,14 +326,14 @@ public class TetrisController implements Initializable {
 		gamePanel.requestFocus();
 	}
 
-	
 	public void onCloseAction(ActionEvent actionEvent) {
 		System.exit(0);
 
 	}
+
 	public void show() {
 		stage.show();
-    	new GameController(this);
-    	
+		new GameController(this);
+
 	}
 }

@@ -28,7 +28,6 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
-
 public class SnakeController implements Initializable {
 	// variables
 	private static int speed = 5;
@@ -53,26 +52,23 @@ public class SnakeController implements Initializable {
 	private Label scoreLabel;
 
 	private Stage stage;
-	
 
 	public SnakeController() throws IOException {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/SnakeView.fxml"));
 		loader.setController(this);
 		loader.load();
 	}
-	
+
 	public AnchorPane getView() {
 		return root;
 	}
 
 	public void initialize(URL location, ResourceBundle resources) {
-		
-		
-		
+
 		Food.newFood();
-	
+
 		GraphicsContext gc = mainCanvas.getGraphicsContext2D();
-		
+
 		new AnimationTimer() {
 			long at = 0;
 
@@ -82,34 +78,32 @@ public class SnakeController implements Initializable {
 					commands(gc);
 					return;
 				}
-				
-				
-				
+
 				if (now - at > 1000000000 / speed) {
 					at = now;
 					commands(gc);
 				}
 			}
 
-		}.start();	
-		stage=new Stage();
-		
+		}.start();
+		stage = new Stage();
+
 		// movimientos
-				stage.addEventFilter(KeyEvent.KEY_PRESSED, key -> {
-					if (key.getCode() == KeyCode.W || key.getCode() == KeyCode.UP) {
-						setDirection(Direccion.UP);
-					}
-					if (key.getCode() == KeyCode.A || key.getCode() == KeyCode.LEFT) {
-						setDirection(Direccion.LEFT);
-					}
-					if (key.getCode() == KeyCode.S || key.getCode() == KeyCode.DOWN) {
-						setDirection(Direccion.DOWN);
-					}
-					if (key.getCode() == KeyCode.D || key.getCode() == KeyCode.RIGHT) {
-						setDirection(Direccion.RIGHT);
-					}
-				});
-	
+		stage.addEventFilter(KeyEvent.KEY_PRESSED, key -> {
+			if (key.getCode() == KeyCode.W || key.getCode() == KeyCode.UP) {
+				setDirection(Direccion.UP);
+			}
+			if (key.getCode() == KeyCode.A || key.getCode() == KeyCode.LEFT) {
+				setDirection(Direccion.LEFT);
+			}
+			if (key.getCode() == KeyCode.S || key.getCode() == KeyCode.DOWN) {
+				setDirection(Direccion.DOWN);
+			}
+			if (key.getCode() == KeyCode.D || key.getCode() == KeyCode.RIGHT) {
+				setDirection(Direccion.RIGHT);
+			}
+		});
+
 		stage.setTitle("Snake");
 		stage.setScene(new Scene(getView()));
 		stage.getIcons().add(new Image("/img/snake_logo.png"));
@@ -118,18 +112,18 @@ public class SnakeController implements Initializable {
 			public void handle(WindowEvent t) {
 				Platform.exit();
 				System.exit(0);
-			}});
+			}
+		});
 
-		
 		// Partes de la serpiente
 		snake.add(new Body(10, 10));
 
 	}
+
 	public void show() {
 		stage.show();
-		
-	}
 
+	}
 
 	public static void commands(GraphicsContext gc) {
 
@@ -241,7 +235,6 @@ public class SnakeController implements Initializable {
 		gc.fillRect(snake.get(0).getX() * cornerSize, snake.get(0).getY() * cornerSize, cornerSize - 2, cornerSize - 2);
 
 	}
-	
 
 	public static int getCornersize() {
 		return cornerSize;
@@ -294,6 +287,5 @@ public class SnakeController implements Initializable {
 	public static void setHeight(int height) {
 		SnakeController.height = height;
 	}
-	
-	
+
 }
