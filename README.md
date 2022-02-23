@@ -37,7 +37,9 @@ El objetivo del juego, es desmarcar todas las casillas que no se traten de una m
 
 #### Funcionamiento
 Utiliza el click izquierdo sobre una casilla para comprobar si el contenido de esta es una mina o no, o el click derecho una vez para marcar la casilla con una bandera, dos veces para marcarla con signo de interrogación y tres veces para remover la marca. No se podrá mostrar el contenido de una casilla marcada con una bandera o una interrogación.
+
 En el caso de que la casilla se trate de una mina, la partida actual finalizará y mostrará una alerta para informar al usuario sobre su derrota. Esta alerta contendrá un pequeño menú con dos opciones con las que se podrá empezar una nueva partida o cerrar el juego. 
+
 En el caso de que la casilla seleccionada no se trate de una mina, mostrará un número con la cantidad de minas adyacentes que servirá como guía para seleccionar correctamente la siguiente casilla.
 
  ## Pong
