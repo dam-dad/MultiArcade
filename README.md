@@ -55,6 +55,16 @@ El clásico juego de móvil, diseñado en JavaFX.
 
 W o flecha UP, ir hacia arriba. S o flecha DOWN, ir hacia abajo. A o flecha LEFT, ir hacia la izquierda. D o flecha RIGHT, ir a la derecha. N para iniciar una nueva partida.
 
+  ## Memoria
+
+Otro clásico, no de las maquinas recreativas, sino de la vida. Recreado en JavaFX utilizando imágenes como cartas
+
+<p align="center"><img src="/githubImg/memoria.png" width=""/></p>
+
+ ### Controles
+
+Tras ejecutar, click en una casilla para desvelar la carta. N para iniciar una nueva partida
+
  # Documentacion
 
 ---------------

@@ -29,7 +29,7 @@
          <children>
             <HBox alignment="CENTER" spacing="5.0">
                <children>
-                  <Button fx:id="tetrisButton" mnemonicParsing="false" onAction="#onTetrisAction" text="Tetris" />
+                  <Button fx:id="pongButton" mnemonicParsing="false" onAction="#onPongAction" text="Pong" />
                   <Button fx:id="snakeButton" alignment="CENTER" mnemonicParsing="false" onAction="#onSnakeAction" text="Snake" />
                </children>
                <VBox.margin>
@@ -41,9 +41,10 @@
                   <Button fx:id="buscaminasButton" defaultButton="true" mnemonicParsing="false" onAction="#onBuscaminasAction" text="Buscaminas" />
                </children>
             </HBox>
+            <Button fx:id="memoriaButton" mnemonicParsing="false" onAction="#onMemoriaAction" text="Memoria" />
             <Button fx:id="salirButton" mnemonicParsing="false" onAction="#onSalirAction" text="Salir">
                <VBox.margin>
-                  <Insets top="10.0" />
+                  <Insets />
                </VBox.margin>
             </Button>
          </children>

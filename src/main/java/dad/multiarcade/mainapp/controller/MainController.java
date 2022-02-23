@@ -4,8 +4,10 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import dad.buscaminas.controller.BuscaminasController;
+import dad.multiarcade.memoria.controller.MemoriaController;
+import dad.multiarcade.pong.controller.PongController;
 import dad.multiarcade.snake.controller.SnakeController;
-import dad.multiarcade.tetris.controller.TetrisController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,10 +20,15 @@ import javafx.scene.layout.VBox;
 public class MainController implements Initializable {
 
 	SnakeController sc = new SnakeController();
-	TetrisController tc = new TetrisController();
+	PongController pc=new PongController();
+	BuscaminasController bc =new BuscaminasController();
+	MemoriaController mc=new MemoriaController();
 
 	@FXML
 	private Button buscaminasButton;
+	
+	@FXML
+    private Button memoriaButton;
 
 	@FXML
 	private VBox buttonVbox;
@@ -39,7 +46,7 @@ public class MainController implements Initializable {
 	private Button snakeButton;
 
 	@FXML
-	private Button tetrisButton;
+	private Button pongButton;
 
 	public MainController() throws IOException {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/MainView.fxml"));
@@ -58,7 +65,7 @@ public class MainController implements Initializable {
 
 	@FXML
 	void onBuscaminasAction(ActionEvent event) {
-
+		bc.show();
 	}
 
 	@FXML
@@ -67,8 +74,13 @@ public class MainController implements Initializable {
 	}
 
 	@FXML
-	void onTetrisAction(ActionEvent event) {
-		tc.show();
+	void onPongAction(ActionEvent event) {
+		pc.show();
+	}
+	
+	@FXML
+	void onMemoriaAction(ActionEvent event) {
+		mc.show();
 	}
 
 	@FXML
