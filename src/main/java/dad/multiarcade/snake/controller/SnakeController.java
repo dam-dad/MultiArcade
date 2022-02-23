@@ -1,11 +1,16 @@
 package dad.multiarcade.snake.controller;
 
+import dad.multiarcade.informes.SnakeDataProvider;
 import dad.multiarcade.snake.model.*;
 
+import java.awt.Desktop;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 import javafx.animation.AnimationTimer;
@@ -15,16 +20,24 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 
 public class SnakeController implements Initializable {
 	// variables
@@ -48,10 +61,14 @@ public class SnakeController implements Initializable {
 
 	@FXML
 	private Label scoreLabel;
+	@FXML
+	private Button exportScoreButton;
+
+	public static final String JRXML_FILE = "/reports/snakeReport.jrxml";
+	public static final String PDF_FILE = "pdf/SnakeScoreReport.pdf";
 
 	private Stage stage;
 	private AnimationTimer timer;
-	
 
 	public SnakeController() throws IOException {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/SnakeView.fxml"));
@@ -69,7 +86,7 @@ public class SnakeController implements Initializable {
 
 		GraphicsContext gc = mainCanvas.getGraphicsContext2D();
 
-		timer=new AnimationTimer() {
+		timer = new AnimationTimer() {
 			long at = 0;
 
 			public void handle(long now) {
@@ -103,10 +120,11 @@ public class SnakeController implements Initializable {
 			}
 			if (key.getCode() == KeyCode.D || key.getCode() == KeyCode.RIGHT) {
 				setDirection(Direccion.RIGHT);
-			}if (key.getCode() == KeyCode.N ){
+			}
+			if (key.getCode() == KeyCode.N) {
 				reset();
 				iniciar();
-				}
+			}
 		});
 
 		stage.setTitle("Snake");
@@ -118,11 +136,9 @@ public class SnakeController implements Initializable {
 			public void handle(WindowEvent t) {
 				reset();
 				timer.stop();
-				
+
 			}
 		});
-
-		
 
 	}
 
@@ -178,7 +194,7 @@ public class SnakeController implements Initializable {
 			snake.add(new Body(-1, -1));
 			Food.newFood();
 			score++;
-			scoreLabel.setText(""+score);
+			scoreLabel.setText("" + score);
 		}
 
 		// Codigo para comerse a si mismo
@@ -193,7 +209,6 @@ public class SnakeController implements Initializable {
 		gc.fillRect(0, 0, width * cornerSize + 70, height * cornerSize);
 		gc.setFill(Color.BLACK);
 		gc.fillRect(0, 0, width * cornerSize, height * cornerSize);
-
 
 		// Color de comida random
 		Color cc = Color.WHITE;
@@ -233,23 +248,43 @@ public class SnakeController implements Initializable {
 		gc.fillRect(snake.get(0).getX() * cornerSize, snake.get(0).getY() * cornerSize, cornerSize - 2, cornerSize - 2);
 
 	}
-	
+
+	@FXML
+	void onExportScoreButton(ActionEvent event) throws JRException, IOException {
+		JasperReport report = JasperCompileManager.compileReport(SnakeController.class.getResourceAsStream(JRXML_FILE));
+
+		// mapa de parámetros para el informe
+		Map<String, Object> parameters = new HashMap<String, Object>();
+		
+
+		// generamos el informe (combinamos el informe compilado con los datos)
+		JasperPrint print = JasperFillManager.fillReport(report, parameters,
+				new JRBeanCollectionDataSource(SnakeDataProvider.getScore()));
+
+		// exporta el informe a un fichero PDF
+		JasperExportManager.exportReportToPdfFile(print, PDF_FILE);
+
+		// Abre el archivo PDF generado con el programa predeterminado del sistema
+		Desktop.getDesktop().open(new File(PDF_FILE));
+	}
+
 	public void gameOver() {
 		if (gameOver) {
 			gameOverLabel.visibleProperty().set(true);
-		timer.stop();}
+			timer.stop();
+		}
 	}
-	
+
 	public void iniciar() {
-		score=0;
-		scoreLabel.setText(""+score);
+		score = 0;
+		scoreLabel.setText("" + score);
 		snake.add(new Body(10, 10));
 	}
-	
+
 	public void reset() {
-		speed=5;
+		speed = 5;
 		setDirection(Direccion.WAIT);
-		gameOver=false;
+		gameOver = false;
 		gameOverLabel.visibleProperty().set(false);
 		snake.clear();
 
@@ -312,7 +347,7 @@ public class SnakeController implements Initializable {
 	}
 
 	public void setScore(int score) {
-		this.score = score;
+		SnakeController.score = score;
 	}
 
 }

@@ -13,3 +13,7 @@
 	-fx-font-size:40
 }
 
+Button{
+	-fx-background-color: #008080;
+}
+
