@@ -5,6 +5,7 @@ Juegos arcade retro
 
 ## Instalador
 
+ - [MultiArcade1.0](https://github.com/dam-dad/MultiArcade/releases)
 
 ## Miembros
 
