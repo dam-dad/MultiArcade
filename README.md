@@ -16,6 +16,7 @@ Juegos arcade retro
 ## Introducción
 
 Proyecto pensado por y para las generaciones más antiguas, recordando varios de los clásicos juegos de la época.
+La aplicación contiene cuatro juegos diferentes, accesibles desde la interfaz principal por medio de un botón con sus respectivos nombres. 
 
 # Interfaz
 
@@ -30,10 +31,14 @@ Juego diseñado en JavaFX.
 
 <p align="center"><img src="/githubImg/buscaminas.png" width=""/></p>
 
-### Controles
+### Guía de uso
+#### Objetivo
+El objetivo del juego, es desmarcar todas las casillas que no se traten de una mina.
 
-Tras ejecutar el juego, click izquierdo sobre una casilla para despejarla y mostrar el número de minas adyacentes. Click derecho para poner una bandera o interrogación.
-en la casilla elegida.
+#### Funcionamiento
+Utiliza el click izquierdo sobre una casilla para comprobar si el contenido de esta es una mina o no, o el click derecho una vez para marcar la casilla con una bandera, dos veces para marcarla con signo de interrogación y tres veces para remover la marca. No se podrá mostrar el contenido de una casilla marcada con una bandera o una interrogación.
+En el caso de que la casilla se trate de una mina, la partida actual finalizará y mostrará una alerta para informar al usuario sobre su derrota. Esta alerta contendrá un pequeño menú con dos opciones con las que se podrá empezar una nueva partida o cerrar el juego. 
+En el caso de que la casilla seleccionada no se trate de una mina, mostrará un número con la cantidad de minas adyacentes que servirá como guía para seleccionar correctamente la siguiente casilla.
 
  ## Pong
 
