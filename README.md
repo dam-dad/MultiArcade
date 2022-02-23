@@ -5,7 +5,6 @@ Juegos arcade retro
 
 ## Instalador
 
-Próximamente, tanto en código fuente como .exe y jar runnable file.
 
 ## Miembros
 
