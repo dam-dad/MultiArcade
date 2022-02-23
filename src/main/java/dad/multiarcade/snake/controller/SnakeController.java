@@ -252,7 +252,6 @@ public class SnakeController implements Initializable {
 	@FXML
 	void onExportScoreButton(ActionEvent event) throws JRException, IOException {
 		JasperReport report = JasperCompileManager.compileReport(SnakeController.class.getResourceAsStream(JRXML_FILE));
-
 		// mapa de parámetros para el informe
 		Map<String, Object> parameters = new HashMap<String, Object>();
 		
@@ -264,8 +263,6 @@ public class SnakeController implements Initializable {
 		// exporta el informe a un fichero PDF
 		JasperExportManager.exportReportToPdfFile(print, PDF_FILE);
 
-		// Abre el archivo PDF generado con el programa predeterminado del sistema
-		Desktop.getDesktop().open(new File(PDF_FILE));
 	}
 
 	public void gameOver() {

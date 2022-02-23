@@ -1,4 +1,4 @@
-package dad.buscaminas.controller;
+package dad.multiarcade.buscaminas.controller;
 
 import java.io.IOException;
 import java.net.URL;
@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-import dad.buscaminas.model.Mina;
+import dad.multiarcade.buscaminas.model.Mina;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

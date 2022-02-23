@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import dad.buscaminas.controller.BuscaminasController;
+import dad.multiarcade.buscaminas.controller.BuscaminasController;
 import dad.multiarcade.memoria.controller.MemoriaController;
 import dad.multiarcade.pong.controller.PongController;
 import dad.multiarcade.snake.controller.SnakeController;

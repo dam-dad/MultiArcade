@@ -1,4 +1,4 @@
-package dad.buscaminas.model;
+package dad.multiarcade.buscaminas.model;
 import javafx.scene.control.Button;
 
 public class Mina extends Button {
