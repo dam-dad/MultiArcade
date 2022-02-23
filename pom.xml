@@ -49,7 +49,7 @@
 							<platform>windows</platform>
 							<winConfig>
 								<generateMsi>false</generateMsi>
-								<createDesktopIconTask>false</createDesktopIconTask>
+								<createDesktopIconTask>true</createDesktopIconTask>
 								<disableDirPage>false</disableDirPage>
 								<disableFinishedPage>false</disableFinishedPage>
 							</winConfig>

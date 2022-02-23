@@ -65,7 +65,7 @@ public class SnakeController implements Initializable {
 	private Button exportScoreButton;
 
 	public static final String JRXML_FILE = "/reports/snakeReport.jrxml";
-	public static final String PDF_FILE = "pdf/SnakeScoreReport.pdf";
+	public static final String PDF_FILE = "/pdf/SnakeScoreReport.pdf";
 
 	private Stage stage;
 	private AnimationTimer timer;
