@@ -1,0 +1,11 @@
+.root{
+    -fx-background-color: #333333;
+
+}
+
+GridPane{
+	-fx-background-color: #333333;
+	-fx-font-family: monospace;
+    -fx-hgap: 2px;
+    -fx-vgap: 2px
+}

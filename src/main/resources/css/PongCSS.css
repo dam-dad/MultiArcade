@@ -1,0 +1,15 @@
+.root{
+	-fx-background-color: #000000;
+}
+
+.scorePlayerLabel{
+	-fx-text-fill: #ADFF2F;
+	-fx-font-size: 25pt;
+
+}
+
+.scoreBotLabel{
+	-fx-text-fill: #ff0000;
+	-fx-font-size: 25pt;
+
+}

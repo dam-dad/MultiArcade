@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import javafx.animation.AnimationTimer;
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -24,7 +23,6 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
@@ -36,9 +34,9 @@ public class SnakeController implements Initializable {
 	private static int height = 20;
 	private static int cornerSize = 25;
 	private static List<Body> snake = new ArrayList<>();
-	private static Direccion direction = Direccion.WAIT;
-	private static boolean gameOver = false;
-
+	private Direccion direction = Direccion.WAIT;
+	private boolean gameOver = false;
+	private static int score;
 	@FXML
 	private Label gameOverLabel;
 
@@ -52,6 +50,8 @@ public class SnakeController implements Initializable {
 	private Label scoreLabel;
 
 	private Stage stage;
+	private AnimationTimer timer;
+	
 
 	public SnakeController() throws IOException {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/SnakeView.fxml"));
@@ -69,23 +69,25 @@ public class SnakeController implements Initializable {
 
 		GraphicsContext gc = mainCanvas.getGraphicsContext2D();
 
-		new AnimationTimer() {
+		timer=new AnimationTimer() {
 			long at = 0;
 
 			public void handle(long now) {
 				if (at == 0) {
 					at = now;
-					commands(gc);
+					instrucciones(gc);
+					gameOver();
 					return;
 				}
 
 				if (now - at > 1000000000 / speed) {
 					at = now;
-					commands(gc);
+					instrucciones(gc);
+					gameOver();
 				}
 			}
 
-		}.start();
+		};
 		stage = new Stage();
 
 		// movimientos
@@ -101,39 +103,37 @@ public class SnakeController implements Initializable {
 			}
 			if (key.getCode() == KeyCode.D || key.getCode() == KeyCode.RIGHT) {
 				setDirection(Direccion.RIGHT);
-			}
+			}if (key.getCode() == KeyCode.N ){
+				reset();
+				iniciar();
+				}
 		});
 
 		stage.setTitle("Snake");
 		stage.setScene(new Scene(getView()));
 		stage.getIcons().add(new Image("/img/snake_logo.png"));
+		stage.setResizable(false);
 		stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
 			@Override
 			public void handle(WindowEvent t) {
-				Platform.exit();
-				System.exit(0);
+				reset();
+				timer.stop();
+				
 			}
 		});
 
-		// Partes de la serpiente
-		snake.add(new Body(10, 10));
+		
 
 	}
 
 	public void show() {
+		iniciar();
+		timer.start();
 		stage.show();
 
 	}
 
-	public static void commands(GraphicsContext gc) {
-
-		// GameOver
-		if (gameOver) {
-			gc.setFill(Color.RED);
-			gc.setFont(new Font("", 50));
-			gc.fillText("GAME OVER", 100, 250);
-			return;
-		}
+	public void instrucciones(GraphicsContext gc) {
 
 		// codigo para que la cola te siga
 		for (int i = snake.size() - 1; i >= 1; i--) {
@@ -177,6 +177,8 @@ public class SnakeController implements Initializable {
 		if (Food.getX() == snake.get(0).getX() && Food.getY() == snake.get(0).getY()) {
 			snake.add(new Body(-1, -1));
 			Food.newFood();
+			score++;
+			scoreLabel.setText(""+score);
 		}
 
 		// Codigo para comerse a si mismo
@@ -192,10 +194,6 @@ public class SnakeController implements Initializable {
 		gc.setFill(Color.BLACK);
 		gc.fillRect(0, 0, width * cornerSize, height * cornerSize);
 
-		// score
-		gc.setFill(Color.PERU);
-		gc.setFont(new Font("", 30));
-		gc.fillText("" + (speed - 6), width * cornerSize + 10, height + 220);
 
 		// Color de comida random
 		Color cc = Color.WHITE;
@@ -235,24 +233,45 @@ public class SnakeController implements Initializable {
 		gc.fillRect(snake.get(0).getX() * cornerSize, snake.get(0).getY() * cornerSize, cornerSize - 2, cornerSize - 2);
 
 	}
+	
+	public void gameOver() {
+		if (gameOver) {
+			gameOverLabel.visibleProperty().set(true);
+		timer.stop();}
+	}
+	
+	public void iniciar() {
+		score=0;
+		scoreLabel.setText(""+score);
+		snake.add(new Body(10, 10));
+	}
+	
+	public void reset() {
+		speed=5;
+		setDirection(Direccion.WAIT);
+		gameOver=false;
+		gameOverLabel.visibleProperty().set(false);
+		snake.clear();
 
-	public static int getCornersize() {
+	}
+
+	public int getCornersize() {
 		return cornerSize;
 	}
 
-	public static Direccion getDirection() {
+	public Direccion getDirection() {
 		return direction;
 	}
 
-	public static void setDirection(Direccion direction) {
-		SnakeController.direction = direction;
+	public void setDirection(Direccion direction) {
+		this.direction = direction;
 	}
 
 	public static List<Body> getSnake() {
 		return snake;
 	}
 
-	public static int getFoodcolor() {
+	public int getFoodcolor() {
 		return foodColor;
 	}
 
@@ -260,7 +279,7 @@ public class SnakeController implements Initializable {
 		SnakeController.foodColor = foodcolor;
 	}
 
-	public static void setSnake(List<Body> snake) {
+	public void setSnake(List<Body> snake) {
 		SnakeController.snake = snake;
 	}
 
@@ -276,7 +295,7 @@ public class SnakeController implements Initializable {
 		return width;
 	}
 
-	public static void setWidth(int width) {
+	public void setWidth(int width) {
 		SnakeController.width = width;
 	}
 
@@ -284,8 +303,16 @@ public class SnakeController implements Initializable {
 		return height;
 	}
 
-	public static void setHeight(int height) {
+	public void setHeight(int height) {
 		SnakeController.height = height;
+	}
+
+	public static int getScore() {
+		return score;
+	}
+
+	public void setScore(int score) {
+		this.score = score;
 	}
 
 }

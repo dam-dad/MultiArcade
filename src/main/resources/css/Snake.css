@@ -1,0 +1,15 @@
+.root {
+	-fx-background-color: black;
+}
+
+
+.gameOverLabel {
+    -fx-text-fill:linear-gradient(from 0% 0% to 100% 100%, yellow, red);
+    -fx-font-size: 80;
+}
+
+.scoreLabel{
+	-fx-text-fill:PERU;
+	-fx-font-size:40
+}
+
