@@ -69,8 +69,9 @@ public class SnakeController implements Initializable {
 	@FXML
 	private Button exportScoreButton;
 
+	static String dataFolder = System.getProperty("user.home") + "/AppData/Roaming";
 	public static final String JRXML_FILE = "/reports/snakeReport.jrxml";
-	public static final String PDF_FILE = "pdf/SnakeScoreReport.pdf";
+	public static final String PDF_FILE = dataFolder+"/MultiArcade/SnakeReports/pdf/SnakeScoreReport.pdf";
 
 	private Stage stage;
 	private AnimationTimer timer;
@@ -271,6 +272,11 @@ public class SnakeController implements Initializable {
 	 */
 	@FXML
 	void onExportScoreButton(ActionEvent event) throws JRException, IOException {
+		File directorio = new File(dataFolder+"/MultiArcade/SnakeReports/pdf");
+        if (!directorio.exists()) {
+        	directorio.mkdirs();
+        }
+		
 		JasperReport report = JasperCompileManager.compileReport(SnakeController.class.getResourceAsStream(JRXML_FILE));
 		// mapa de parámetros para el informe
 		Map<String, Object> parameters = new HashMap<String, Object>();
