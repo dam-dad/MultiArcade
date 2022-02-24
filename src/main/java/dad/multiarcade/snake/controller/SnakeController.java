@@ -39,6 +39,11 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 
+/**
+ * 
+ * @author Enrique Luque Pérez, Aarón Pérez Rodríguez y Borja Díaz Ramos
+ *
+ */
 public class SnakeController implements Initializable {
 	// variables
 	private static int speed = 5;
@@ -142,6 +147,9 @@ public class SnakeController implements Initializable {
 
 	}
 
+	/**
+	 * Muestra y da inicio al juego
+	 */
 	public void show() {
 		iniciar();
 		timer.start();
@@ -149,6 +157,11 @@ public class SnakeController implements Initializable {
 
 	}
 
+	/**
+	 * Conjunto de funciones que definen la lógica del juego.
+	 * 
+	 * @param gc contiene el lugar donde se va a llevar a cabo el juego.
+	 */
 	public void instrucciones(GraphicsContext gc) {
 
 		// codigo para que la cola te siga
@@ -249,12 +262,18 @@ public class SnakeController implements Initializable {
 
 	}
 
+	/**
+	 * Acción del botón del informe.
+	 * 
+	 * @param event pulsar el botón
+	 * @throws JRException
+	 * @throws IOException
+	 */
 	@FXML
 	void onExportScoreButton(ActionEvent event) throws JRException, IOException {
 		JasperReport report = JasperCompileManager.compileReport(SnakeController.class.getResourceAsStream(JRXML_FILE));
 		// mapa de parámetros para el informe
 		Map<String, Object> parameters = new HashMap<String, Object>();
-		
 
 		// generamos el informe (combinamos el informe compilado con los datos)
 		JasperPrint print = JasperFillManager.fillReport(report, parameters,
@@ -262,11 +281,14 @@ public class SnakeController implements Initializable {
 
 		// exporta el informe a un fichero PDF
 		JasperExportManager.exportReportToPdfFile(print, PDF_FILE);
-		
+
 		Desktop.getDesktop().open(new File(PDF_FILE));
 
 	}
 
+	/**
+	 * Indica el final del juego.
+	 */
 	public void gameOver() {
 		if (gameOver) {
 			gameOverLabel.visibleProperty().set(true);
@@ -274,12 +296,18 @@ public class SnakeController implements Initializable {
 		}
 	}
 
+	/**
+	 * Inicia el juego.
+	 */
 	public void iniciar() {
 		score = 0;
 		scoreLabel.setText("" + score);
 		snake.add(new Body(10, 10));
 	}
 
+	/**
+	 * Reinicia el juego.
+	 */
 	public void reset() {
 		speed = 5;
 		setDirection(Direccion.WAIT);

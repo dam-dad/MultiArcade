@@ -19,6 +19,11 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import dad.multiarcade.memoria.model.Imagen;
 
+/**
+ * 
+ * @author Enrique Luque Pérez, Aarón Pérez Rodríguez y Borja Díaz Ramos
+ *
+ */
 public class MemoriaController implements Initializable {
 
 	@FXML
@@ -70,6 +75,9 @@ public class MemoriaController implements Initializable {
 		});
 	}
 
+	/**
+	 * Mezcla el array de Imagen y ajusta el tamaño de la vista .
+	 */
 	public void shuffle() {
 
 		Collections.shuffle(imagenes);
@@ -82,6 +90,9 @@ public class MemoriaController implements Initializable {
 
 	}
 
+	/**
+	 * Inserta imágenes predeterminadas a un array de la clase Imagen.
+	 */
 	public static void ponerCartas() {
 
 		MemoriaController.getImagenes().add(new Imagen(new Image("/img/memoria/chica.png")));
@@ -120,6 +131,9 @@ public class MemoriaController implements Initializable {
 
 	}
 
+	/**
+	 * Elimina el progreso y empieza de nuevo.
+	 */
 	public void reset() {
 		MemoriaController.getImagenes().clear();
 		MemoriaController.getImagenes2().clear();
@@ -129,11 +143,17 @@ public class MemoriaController implements Initializable {
 		iniciar();
 	}
 
+	/**
+	 * Inicia el programa.
+	 */
 	public void iniciar() {
 		ponerCartas();
 		shuffle();
 	}
 
+	/**
+	 * Muestra el juego.
+	 */
 	public void show() {
 		stage.show();
 	}

@@ -4,13 +4,20 @@ import java.util.Random;
 
 import dad.multiarcade.snake.controller.SnakeController;
 
+/**
+ * 
+ * @author Enrique Luque Pérez, Aarón Pérez Rodríguez y Borja Díaz Ramos
+ *
+ */
 public class Food {
 
 	private static int x;
 	private static int y;
 	static Random rand = new Random();
 
-	// Creador de comida
+	/**
+	 * Genera un círculo (comida) dentro de la escena y aumenta la velocidad.
+	 */
 	public static void newFood() {
 		while (true) {
 			x = rand.nextInt(SnakeController.getWidth());

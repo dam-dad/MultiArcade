@@ -1,5 +1,10 @@
 package dad.multiarcade.snake.model;
 
+/**
+ * 
+ * @author Enrique Luque Pérez, Aarón Pérez Rodríguez y Borja Díaz Ramos
+ *
+ */
 public class Body {
 	private int x;
 	private int y;

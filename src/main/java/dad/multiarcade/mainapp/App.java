@@ -6,6 +6,11 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
+/**
+ * 
+ * @author Enrique Luque Pérez, Aarón Pérez Rodríguez y Borja Díaz Ramos
+ *
+ */
 public class App extends Application {
 	private MainController mainController;
 

@@ -17,18 +17,23 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 
+/**
+ * 
+ * @author Enrique Luque Pérez, Aarón Pérez Rodríguez y Borja Díaz Ramos
+ *
+ */
 public class MainController implements Initializable {
 
 	SnakeController sc = new SnakeController();
-	PongController pc=new PongController();
-	BuscaminasController bc =new BuscaminasController();
-	MemoriaController mc=new MemoriaController();
+	PongController pc = new PongController();
+	BuscaminasController bc = new BuscaminasController();
+	MemoriaController mc = new MemoriaController();
 
 	@FXML
 	private Button buscaminasButton;
-	
+
 	@FXML
-    private Button memoriaButton;
+	private Button memoriaButton;
 
 	@FXML
 	private VBox buttonVbox;
@@ -77,7 +82,7 @@ public class MainController implements Initializable {
 	void onPongAction(ActionEvent event) {
 		pc.show();
 	}
-	
+
 	@FXML
 	void onMemoriaAction(ActionEvent event) {
 		mc.show();

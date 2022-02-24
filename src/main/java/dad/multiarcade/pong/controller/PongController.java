@@ -53,7 +53,7 @@ public class PongController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		newGame();
-		timer=new AnimationTimer() {
+		timer = new AnimationTimer() {
 
 			@Override
 			public void handle(long now) {
@@ -62,7 +62,6 @@ public class PongController implements Initializable {
 
 			}
 		};
-
 
 		stage = new Stage();
 
@@ -96,10 +95,11 @@ public class PongController implements Initializable {
 			}
 		});
 
-
 	}
-	
 
+	/**
+	 * Asignar bordes de la escena para los rebotes de la bola y el bot.
+	 */
 	private void gameUpdate() {
 
 		double x = ball.getLayoutX();
@@ -132,7 +132,9 @@ public class PongController implements Initializable {
 		}
 	}
 
-	// marcar puntos y resetear posicion
+	/**
+	 * Marcar puntos y marcador.
+	 */
 	private void score() {
 		if (ball.getLayoutX() >= WIDTH) {
 			speedX = 1;
@@ -169,7 +171,9 @@ public class PongController implements Initializable {
 		}
 	}
 
-	// genera la nueva partida e inicializa todo en su lugar
+	/**
+	 * Genera una nueva partida e inicializa todo en su lugar.
+	 */
 	private void newGame() {
 		line = new Line(WIDTH / 2, 0, WIDTH / 2, HEIGHT);
 		line.setStroke(Color.WHITE);
@@ -192,7 +196,10 @@ public class PongController implements Initializable {
 		root.getChildren().addAll(line, bot, player, ball);
 
 	}
-	//resetea la partida
+
+	/**
+	 * Reinicia la partida
+	 */
 	private void reset() {
 		scorePlayerLabel.setText("0");
 		scoreBotLabel.setText("0");
