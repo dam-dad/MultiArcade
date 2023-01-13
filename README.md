@@ -20,7 +20,7 @@ La aplicación contiene cuatro juegos diferentes, accesibles desde la interfaz p
 
 # Interfaz
 
-Interfaz simple e intuitiva, sin perder tiempo para ir a jugar
+Interfaz.
 
 <p align="center"><img src="/githubImg/interfazPrincipal.png" width=""/></p>
 
