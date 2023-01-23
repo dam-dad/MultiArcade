@@ -6,16 +6,26 @@
 
 
 .root {
-	-fx-background-image: url("/img/arcade_background.png");
+	-fx-background-image: url("/img/Retrowave.gif");
 	-fx-background-size: stretch;
 }
 
-
-Button {
-    -fx-background-color:#1a7cb6;
-}
-
 Label{
-	-fx-text-fill:linear-gradient(from 0% 0% to 100% 100%, white, purple);
+	-fx-text-fill:linear-gradient(from 0% 0% to 100% 100%, #52EDEB, pink);
+	-fx-font-family: "Playbill";
+	-fx-font-size: 90;
 }
 
+Button:focus{
+	-fx-border-color: blue;
+}
+
+Button:armed{
+    -fx-border-color: pink;
+}
+
+.labelJuego{
+	-fx-text-fill: #85F44D;
+	-fx-font-family: "papyrus";
+	-fx-font-size: 30;
+}

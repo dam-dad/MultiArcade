@@ -3,17 +3,19 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane fx:id="root" prefHeight="400.0" prefWidth="300.0" stylesheets="@../css/MainCss.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane fx:id="root" prefHeight="500.0" prefWidth="700.0" stylesheets="@../css/MainCss.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <rowConstraints>
-      <RowConstraints prefHeight="30.0" />
-      <RowConstraints prefHeight="30.0" vgrow="ALWAYS" />
+      <RowConstraints minHeight="40.0" />
+      <RowConstraints minHeight="-Infinity" />
+      <RowConstraints vgrow="ALWAYS" />
    </rowConstraints>
    <columnConstraints>
       <ColumnConstraints hgrow="ALWAYS" />
@@ -21,37 +23,43 @@
       <ColumnConstraints hgrow="ALWAYS" />
    </columnConstraints>
    <children>
-      <Label fx:id="multiArcadeLabel" text="MULTI" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER">
-         <font>
-            <Font size="24.0" />
-         </font></Label>
-      <VBox fx:id="buttonVbox" alignment="CENTER" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+      <Label fx:id="multiArcadeLabel" text="MULTIARCADE" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+      <VBox fx:id="buttonVbox" alignment="CENTER" spacing="15.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
          <children>
-            <HBox alignment="CENTER" spacing="5.0">
-               <children>
-                  <Button fx:id="pongButton" mnemonicParsing="false" onAction="#onPongAction" text="Pong" />
-                  <Button fx:id="snakeButton" alignment="CENTER" mnemonicParsing="false" onAction="#onSnakeAction" text="Snake" />
-               </children>
-               <VBox.margin>
-                  <Insets top="100.0" />
-               </VBox.margin>
-            </HBox>
-            <HBox alignment="CENTER" spacing="5.0">
-               <children>
-                  <Button fx:id="buscaminasButton" defaultButton="true" mnemonicParsing="false" onAction="#onBuscaminasAction" text="Buscaminas" />
-               </children>
-            </HBox>
-            <Button fx:id="memoriaButton" mnemonicParsing="false" onAction="#onMemoriaAction" text="Memoria" />
-            <Button fx:id="salirButton" mnemonicParsing="false" onAction="#onSalirAction" text="Salir">
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
+            <Button fx:id="jugarButton" mnemonicParsing="false" onAction="#onJugarAction">
+               <graphic>
+                  <ImageView fx:id="juegoImg" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../img/PongIMG.jpg" />
+                     </image></ImageView>
+               </graphic>
             </Button>
+            <Label fx:id="juegoLabel" styleClass="labelJuego">
+               <font>
+                  <Font size="38.0" />
+               </font>
+            </Label>
          </children>
          <padding>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </padding>
       </VBox>
+      <Button fx:id="atrasButton" mnemonicParsing="false" onAction="#onAtrasAction" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+         <graphic>
+            <ImageView pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/double-arrow_left.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <Button fx:id="siguienteButton" mnemonicParsing="false" onAction="#onSiguienteAction" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+         <graphic>
+            <ImageView pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/double-arrow.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
    </children>
    <padding>
       <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
