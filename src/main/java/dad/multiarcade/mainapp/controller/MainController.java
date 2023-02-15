@@ -9,6 +9,7 @@ import dad.multiarcade.buscaminas.controller.BuscaminasController;
 import dad.multiarcade.memoria.controller.MemoriaController;
 import dad.multiarcade.pong.controller.PongController;
 import dad.multiarcade.snake.controller.SnakeController;
+import dad.multiarcade.whackAMole.controller.WhackAMoleController;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -39,30 +40,13 @@ public class MainController implements Initializable {
 	private PongController pc = new PongController();
 	private BuscaminasController bc = new BuscaminasController();
 	private MemoriaController mc = new MemoriaController();
-
-	@FXML
-	private Button buscaminasButton;
-
-	@FXML
-	private Button memoriaButton;
-
-	@FXML
-	private VBox buttonVbox;
+	private WhackAMoleController wamc = new WhackAMoleController();
 
 	@FXML
 	private Label multiArcadeLabel;
 
 	@FXML
 	private GridPane root;
-
-	@FXML
-	private Button salirButton;
-
-	@FXML
-	private Button snakeButton;
-
-	@FXML
-	private Button pongButton;
 
 	@FXML
 	private Button atrasButton;
@@ -137,33 +121,11 @@ public class MainController implements Initializable {
 		case 3:
 			mc.show();
 			break;
+		case 4:
+			wamc.show();
+			break;
 		}
-	}
-
-	@FXML
-	void onBuscaminasAction(ActionEvent event) {
-		bc.show();
-	}
-
-	@FXML
-	void onSnakeAction(ActionEvent event) {
-		sc.show();
-	}
-
-	@FXML
-	void onPongAction(ActionEvent event) {
-		pc.show();
-	}
-
-	@FXML
-	void onMemoriaAction(ActionEvent event) {
-		mc.show();
-	}
-
-	@FXML
-	void onSalirAction(ActionEvent event) {
-		System.exit(0);
-
+		
 	}
 	
 	public void cambiarJuego() {
@@ -183,6 +145,10 @@ public class MainController implements Initializable {
 		case 3:
 			juegoImg.setImage(new Image("/img/memoriaIMG.png"));
 			juegoLabel.setText("MEMORIA");
+			break;
+		case 4:
+			juegoImg.setImage(new Image("/img/whackAMoleIMG.png"));
+			juegoLabel.setText("WHACK A MOLE");
 			break;
 		}
 	}

@@ -41,7 +41,7 @@ public class BuscaminasController implements Initializable {
 	// root
 	private static int filas = 10;
 	private static int columnas = 10;
-	private static int numeroMinas = 12;
+	private static int numeroMinas = 15;
 	private Mina casilla[][] = new Mina[columnas][filas];
 	Stage stage;
 	Scene scene;
@@ -112,7 +112,6 @@ public class BuscaminasController implements Initializable {
 						if (e.getButton() == MouseButton.PRIMARY && casilla[a][b].getEstado() == 0) {
 							actualizarMina(a, b);
 							casilla[a][b].setCasillaVisible(true);
-							;
 							calcularResultado();
 						} else if (e.getButton() == MouseButton.SECONDARY && !casilla[a][b].isCasillaVisible()) {
 							marcarMina(a, b);
@@ -191,8 +190,47 @@ public class BuscaminasController implements Initializable {
 			for (int j = 0; j < filas; j++) {
 				if ((i == columna || i == (columna - 1) || i == (columna + 1))
 						&& (j == fila || j == (fila - 1) || j == (fila + 1))) {
-					if (casilla[i][j].isEsMina()) {
-						casilla[columna][fila].setContador(casilla[columna][fila].getContador() + 1);
+					if(casilla[i][j].isCasillaVisible() == false) {
+						if (casilla[i][j].isEsMina()) {
+							casilla[columna][fila].setContador(casilla[columna][fila].getContador() + 1);
+							
+						}
+					}						
+				}
+			}
+
+
+		}
+		if(casilla[columna][fila].getContador()==0) {
+			
+			for (int x = 0; x < columnas; x++) {
+				for (int z = 0; z < filas; z++) {
+					if ((x == columna || x == (columna - 1) || x == (columna + 1))
+							&& (z == fila || z == (fila - 1) || z == (fila + 1))) {
+						if (casilla[x][z].isCasillaVisible() == false && casilla[x][z].getEstado() == 0) {
+							casilla[x][z].setContador(0);
+							casilla[x][z].setStyle("-fx-background-color: #c7caf3;");
+							//contarAlrededor(x, z);
+							for (int i = 0; i < columnas; i++) {
+								for (int j = 0; j < filas; j++) {
+									if ((i == x || i == (x - 1) || i == (x + 1))
+											&& (j == z || j == (z - 1) || j == (z + 1))) {
+										if(casilla[i][j].isCasillaVisible() == false) {
+											if (casilla[i][j].isEsMina()) {
+												casilla[x][z].setContador(casilla[x][z].getContador() + 1);
+												
+											}
+										}						
+									}
+								}
+
+
+							}
+							
+							casilla[x][z].setText(Integer.toString(casilla[x][z].getContador()));
+							casilla[x][z].setCasillaVisible(true);
+							calcularResultado();
+						}
 					}
 				}
 			}

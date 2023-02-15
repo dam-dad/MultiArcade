@@ -11,9 +11,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane fx:id="root" prefHeight="500.0" prefWidth="700.0" stylesheets="@../css/MainCss.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane fx:id="root" prefHeight="400.0" prefWidth="550.0" stylesheets="@../css/MainCss.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <rowConstraints>
-      <RowConstraints minHeight="40.0" />
+      <RowConstraints minHeight="30.0" />
       <RowConstraints minHeight="-Infinity" />
       <RowConstraints vgrow="ALWAYS" />
    </rowConstraints>
@@ -24,7 +24,7 @@
    </columnConstraints>
    <children>
       <Label fx:id="multiArcadeLabel" text="MULTIARCADE" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-      <VBox fx:id="buttonVbox" alignment="CENTER" spacing="15.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+      <VBox fx:id="buttonVbox" alignment="CENTER" spacing="15.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
          <children>
             <Button fx:id="jugarButton" mnemonicParsing="false" onAction="#onJugarAction">
                <graphic>
@@ -44,7 +44,7 @@
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </padding>
       </VBox>
-      <Button fx:id="atrasButton" mnemonicParsing="false" onAction="#onAtrasAction" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+      <Button fx:id="atrasButton" mnemonicParsing="false" onAction="#onAtrasAction" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
          <graphic>
             <ImageView pickOnBounds="true" preserveRatio="true">
                <image>
@@ -52,7 +52,7 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <Button fx:id="siguienteButton" mnemonicParsing="false" onAction="#onSiguienteAction" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+      <Button fx:id="siguienteButton" mnemonicParsing="false" onAction="#onSiguienteAction" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
          <graphic>
             <ImageView pickOnBounds="true" preserveRatio="true">
                <image>
