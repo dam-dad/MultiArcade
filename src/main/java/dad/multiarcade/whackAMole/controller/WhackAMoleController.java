@@ -65,7 +65,7 @@ public class WhackAMoleController implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 		
 		stage = new Stage();
-		stage.setTitle("Snake");
+		stage.setTitle("Whack A Mole");
 		stage.setScene(new Scene(getView()));
 		
 	}

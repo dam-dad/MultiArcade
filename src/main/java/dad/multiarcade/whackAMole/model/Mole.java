@@ -1,5 +1,6 @@
 package dad.multiarcade.whackAMole.model;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -9,36 +10,50 @@ import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
 
-public class Mole extends Button implements Initializable {
+public class Mole extends BorderPane implements Initializable {
 
 	private BooleanProperty desactivadoProperty = new SimpleBooleanProperty(true);
 	private IntegerProperty puntosProperty = new SimpleIntegerProperty();
 
-	private Button moleButton;
+	@FXML
+    private Button moleButton;
 
-	private ImageView moleImg;
+    @FXML
+    private ImageView moleImg;
 
+	public Mole() {
+		super();
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Mole.fxml"));
+			loader.setRoot(this);
+			loader.setController(this);
+			loader.load();
+		} catch (IOException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+	}
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
-		moleButton.setDisable(true);
-		moleImg = new ImageView(new Image("/img/agujero.jpg"));
-		moleButton.setGraphic(moleImg);
+		this.setDisable(true);
 		this.disableProperty().bindBidirectional(desactivadoProperty);
 		desactivadoProperty.addListener((o, ov, nv) -> onActivar(o, ov, nv));
-
-		moleButton.setOnAction(e -> onMoleAction(e));
-
 	}
 
-	public void onMoleAction(ActionEvent e) {
+	 @FXML
+	    void onMoleAction(ActionEvent event) {
 		puntosProperty.add(1);
-		moleButton.setDisable(true);
+		this.setDisable(true);
 	}
 
 	public Object onActivar(ObservableValue<? extends Boolean> o, Boolean ov, Boolean nv) {
@@ -63,16 +78,16 @@ public class Mole extends Button implements Initializable {
 		this.puntosPropertyProperty().set(puntosProperty);
 	}
 
-	public final BooleanProperty activadoPropertyProperty() {
+	public final BooleanProperty desactivadoPropertyProperty() {
 		return this.desactivadoProperty;
 	}
 
-	public final boolean getActivadoProperty() {
-		return this.activadoPropertyProperty().get();
+	public final boolean getDesactivadoProperty() {
+		return this.desactivadoPropertyProperty().get();
 	}
 
-	public final void setActivadoProperty(final boolean activadoProperty) {
-		this.activadoPropertyProperty().set(activadoProperty);
+	public final void setDesactivadoProperty(final boolean desactivadoProperty) {
+		this.desactivadoPropertyProperty().set(desactivadoProperty);
 	}
 
 }
